@@ -14,11 +14,12 @@ import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Backend from './pages/backend'
+
 import Profile from './pages/Profile'
 import ScrollToTop from './components/Scrolltotop'
 import Backendorders from './pages/backendorders'
 import Adminpanel from './pages/adminpanel'
+import Backend from './pages/backend'
 
 // import ScrollToTop from './components/Scrolltotop'
 
