@@ -3,7 +3,7 @@ import { ShopContext } from '../context/ShopContext';
 import Title from '../components/Title';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import CartTotal from '../components/cartTotal';
+import CartTotal from '../components/CartTotal';
 import {Card, CardBody, CardFooter, Image,Skeleton} from "@nextui-org/react";
 
 const Cart = () => {
