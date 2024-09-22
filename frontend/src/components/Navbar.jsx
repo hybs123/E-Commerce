@@ -24,7 +24,7 @@ const Navbar = () => {
   const logoutuser = async () => {
     try {
       // Optional: Send a logout request to the backend
-      await fetch('http://localhost:3001/logout', { method: 'POST', credentials: 'include' });
+      await fetch('https://sara-organics-backend.onrender.com/logout', { method: 'POST', credentials: 'include' });
 
       // Clear user data from context and local storage
       setUser(null); // Assuming setUser updates the user context

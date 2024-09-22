@@ -32,7 +32,7 @@ const Placeorder = () => {
       return;
     }
     try {
-      const response = await fetch("http://localhost:3001/api/create-order", {
+      const response = await fetch("https://sara-organics-backend.onrender.com/api/create-order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

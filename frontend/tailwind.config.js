@@ -10,7 +10,7 @@ const {
 
 export default {
   content: [
-    "./public/index.html",
+    "index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
      "../node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
