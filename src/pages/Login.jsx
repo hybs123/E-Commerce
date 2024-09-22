@@ -17,7 +17,7 @@ const Login = () => {
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-    const url = currentState === 'login' ? 'http://localhost:3001/login' : 'http://localhost:3001/register';
+    const url = currentState === 'login' ? 'https://sara-organics-backend.vercel.app/login' : 'https://sara-organics-backend.vercel.app/register';
 
     // Prepare JSON data
     const dataToSend = {

@@ -57,7 +57,7 @@ const ShopContextProvider = (props)=> {
 
     useEffect(() => {
         
-        axios.get("http://127.0.0.1:3001/checkAuth", {
+        axios.get("https://sara-organics-backend.vercel.app/checkAuth", {
             headers: {
                 Authorization: Cookies.get("token"),
             }, withCredentials: true
@@ -77,7 +77,7 @@ const ShopContextProvider = (props)=> {
             return;
         }
     
-        axios.get("http://127.0.0.1:3001/addtocart", {
+        axios.get("https://sara-organics-backend.vercel.app/addtocart", {
             params: { user: user.username }
         })
         .then(response => {
@@ -102,7 +102,7 @@ const ShopContextProvider = (props)=> {
             return;
         }
     
-        axios.get("http://127.0.0.1:3001/orders", {
+        axios.get("https://sara-organics-backend.vercel.app/orders", {
             params: { user: user.username }
         })
         .then(response => {
@@ -123,7 +123,7 @@ const ShopContextProvider = (props)=> {
             return;
         }
 
-        axios.get("http://127.0.0.1:3001/review", {
+        axios.get("https://sara-organics-backend.vercel.app/review", {
             params: { product: productreview }
         })
         .then(response => {
@@ -140,7 +140,7 @@ const ShopContextProvider = (props)=> {
 
     useEffect(() => {
         if (user.username && cart && cartpush) {
-            axios.post("http://127.0.0.1:3001/addtocart", {
+            axios.post("https://sara-organics-backend.vercel.app/addtocart", {
                 user: user.username,
                 cart: cart
             })
@@ -315,7 +315,7 @@ const ShopContextProvider = (props)=> {
         try {
             // Create an array of promises for each cart item
             console.log("phone:",user.Phone,'Address:',user.Address)
-                axios.post("http://127.0.0.1:3001/mail", {
+                axios.post("https://sara-organics-backend.vercel.app/mail", {
                    
                     user: user,
                     
@@ -331,7 +331,7 @@ const ShopContextProvider = (props)=> {
                 })
 
                
-                axios.post("http://127.0.0.1:3001/orderplaced", {
+                axios.post("https://sara-organics-backend.vercel.app/orderplaced", {
                    
                     id: user.username,
                     address:user.Address,
