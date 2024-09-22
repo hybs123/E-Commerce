@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import Cookies from 'js-cookie';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [currentState, setCurrentState] = useState('login');
@@ -51,6 +52,7 @@ const Login = () => {
 
     } catch (error) {
         console.error('Error:', error.message);
+        toast.error("Please enter valid user details or create a new account")
     }
 };
 

@@ -73,7 +73,7 @@ const Navbar = () => {
     <div className='group relative'>
 
     
-    <FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/>
+    <Link to={'/login'}><FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/></Link>
     
       
       <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4' >

@@ -8,24 +8,27 @@ import { toast } from 'react-toastify';
 
 const AdminPanel = () => {
 
-  const { products,loading,currency,user,navigate,userloading,orders } = useContext(ShopContext);
+  const { products,loading,currency,user,navigate,userloading,orders,admin } = useContext(ShopContext);
   const [ordersall, setOrdersAll] = useState([]);
   const [detailedOrders, setDetailedOrders] = useState([]);
   const [totalsales, settotalsales] = useState([]);
   const [totalrevenue,setTotalrevenue] = useState(0);
 
 
+  const checkadmin = ()=>{
+    console.log(admin)
+    if(!admin){
+      toast.error('Admin Access Denied');
+      navigate('/')
+    }
+  }
+
   useEffect(()=>{
-    console.log("User in admin is:",user,userloading)
-    if(!userloading && user.username!=='haidersoni47@gmail.com'){
-      toast.error('Admin access denied');
-      navigate('/')
+    if(!userloading){
+      console.log("useeffect admin is",admin)
+      checkadmin();
     }
-    else if(userloading && !user.username){
-      toast.error('Admin access denied');
-      navigate('/')
-    }
-  },[userloading])
+  },[admin,userloading])
 
 
   useEffect(() => {
@@ -64,6 +67,8 @@ const AdminPanel = () => {
       setTotalrevenue(temp);
     }
   },[totalsales])
+
+  
 
   const onTrackChange = (username, orderitemid, orderitemsize, track) => {
     axios.post("http://127.0.0.1:3001/ordersbackend", {

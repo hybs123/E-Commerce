@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { setSyntheticLeadingComments } from "typescript";
 
 export const ShopContext = createContext();
 
@@ -22,7 +23,7 @@ const ShopContextProvider = (props)=> {
     const [products,setProducts] = useState([]);
     const [loading,setloading] = useState(true);
     const [userloading,setuserloading] = useState(true);
-
+    const [admin,setAdmin] = useState(false)
     const [orderloading,setorderloading] = useState(true);
     const [cartpush,setcartpush] = useState(false);
     const [user,setUser] = useState({});
@@ -151,6 +152,23 @@ const ShopContextProvider = (props)=> {
             .catch(err => console.log('Error:', err));
         }
     }, [user.username,cartpush]);
+
+
+    useEffect(() => {
+        // Check if userloading is false
+        if (!userloading) {
+          console.log("User in admin is:", user);
+      
+          // Only proceed if user is loaded
+          if (!user.username || user.username !== 'haidersoni47@gmail.com') {
+            setAdmin(false);
+            
+          }
+          else if(user.username==='haidersoni47@gmail.com'){
+            setAdmin(true);
+          }
+        }
+      }, [userloading]);
     
     
 
@@ -345,7 +363,7 @@ const ShopContextProvider = (props)=> {
 
     const value = {
         
-        products ,orderloading,setorderloading,setorders,orders,starloading,orderplaced,setstarloading,setproductReview,renderStars, productreview,review,reviewloading,setreviewloading,user,userloading,setuserloading,setUser,loading, currency, delivery_fee, search, showsearch,setSearch,setShowSearch,cartitems,cart,setCart,addtocart,getCartCount,updatequantity,getCartAmount,navigate
+        products ,orderloading,admin,setorderloading,setorders,orders,starloading,orderplaced,setstarloading,setproductReview,renderStars, productreview,review,reviewloading,setreviewloading,user,userloading,setuserloading,setUser,loading, currency, delivery_fee, search, showsearch,setSearch,setShowSearch,cartitems,cart,setCart,addtocart,getCartCount,updatequantity,getCartAmount,navigate
     }
 
 
