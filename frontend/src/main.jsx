@@ -1,18 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-import { BrowserRouter } from 'react-router-dom'
-import ShopContextProvider, { ShopContext } from './context/ShopContext.jsx'
-import {NextUIProvider} from '@nextui-org/react'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import { BrowserRouter } from "react-router-dom";
+import ShopContextProvider, { ShopContext } from "./context/ShopContext.jsx";
+import { NextUIProvider } from "@nextui-org/react";
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-   <NextUIProvider>
-  <ShopContextProvider>
-
-    <App />
-  </ShopContextProvider>
-  </NextUIProvider>
-  </BrowserRouter>,
-)
+    <NextUIProvider>
+      <ShopContextProvider>
+        <App />
+      </ShopContextProvider>
+    </NextUIProvider>
+  </BrowserRouter>
+);
