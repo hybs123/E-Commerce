@@ -1,11 +1,11 @@
-import logo from '../assets/sara-organics.jpg';
-import Bottle1 from '../assets/Bottle-1.jpg';
-import Bottle2 from '../assets/Bottle-2.jpg';
-import Bottle3 from '../assets/Bottle-3.jpg';
-import Bottle4 from '../assets/Bottle-4.jpg';
-import search_icon from '../assets/search_icon.png';
-import About from '../assets/About.jpeg';
-import razor from '../assets/razor.png'
+import logo from './sara-organics.jpg';
+import Bottle1 from './Bottle-1.jpg';
+import Bottle2 from './Bottle-2.jpg';
+import Bottle3 from './Bottle-3.jpg';
+import Bottle4 from './Bottle-4.jpg';
+import search_icon from './search_icon.png';
+import About from './About.jpeg';
+import razor from './razor.png'
 
 
 export const assets = {

@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
-import {Card, CardBody, CardFooter, Image,Skeleton} from "@nextui-org/react";
-import { WobbleCard } from '../lib/components/ui/wobble-card';
-import {WavyBackground } from '../lib/components/ui/wavy-background'
-import { Vortex } from "../lib/components/ui/vortex";
+
+
 const Hero = () => {
   const { products, loading,navigate } = useContext(ShopContext);
   const [img, setImg] = useState('');

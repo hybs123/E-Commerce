@@ -35,7 +35,7 @@ const AdminPanel = () => {
     // Fetch orders from backend
     if(!loading){
 
-      axios.get("https://sara-organics-backend.vercel.app/ordersbackend")
+      axios.get("http://localhost:3001/ordersbackend")
         .then(response => {
           const ordersData = response.data.ordersbackend;
           setOrdersAll(ordersData);
@@ -71,7 +71,7 @@ const AdminPanel = () => {
   
 
   const onTrackChange = (username, orderitemid, orderitemsize, track) => {
-    axios.post("https://sara-organics-backend.vercel.app/ordersbackend", {
+    axios.post("http://localhost:3001/ordersbackend", {
       username: username,
       orderitemid: orderitemid,
       track: track,

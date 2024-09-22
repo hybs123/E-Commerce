@@ -15,7 +15,7 @@ const Review = (props) => {
         }
     
         try {
-            const response = await fetch('https://sara-organics-backend.vercel.app/review', {
+            const response = await fetch('http://localhost:3001/review', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

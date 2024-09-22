@@ -35,8 +35,7 @@ const razorpay = new Razorpay({
 
 
 app.use(express.urlencoded({extended:false}));
-app.set("view engine","ejs");
-app.set("views",path.resolve("../views"));
+
 app.use(express.json());
 // app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use('/assets', express.static(path.join(__dirname, 'uploads')));
