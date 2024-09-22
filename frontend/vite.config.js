@@ -7,10 +7,4 @@ export default defineConfig({
   server: {
     port: 5173, // Change to your desired port
   },
-  build: {
-    rollupOptions: {
-      input: resolve(__dirname, 'public/index.html'),
-      output: resolve(__dirname, 'dist'),
-    },
-  },
 });
