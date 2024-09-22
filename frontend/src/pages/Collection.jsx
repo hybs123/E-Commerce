@@ -14,6 +14,8 @@ const Collection = () => {
   const [subCategory,setsubCategory] = useState([]);
   const [sortType,setSortType] = useState('relavent');
 
+  const url = "https://sara-organics-backend.onrender.com"
+
   const toggleCategory = (e)=>{
     if(category.includes(e.target.value)){
       setCategory(prev=> prev.filter(item=>item!== e.target.value));
@@ -167,7 +169,7 @@ const Collection = () => {
                 
                 alt={item.productname}
                 className="aspect-1"
-                src={item.image[0]}
+                src={`${url}${item.image[0]}`}
               />
             </CardBody>
             <CardFooter className="text-small justify-between">
