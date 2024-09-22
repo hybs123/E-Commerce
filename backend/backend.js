@@ -37,7 +37,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.json());
 // app.use('/assets', express.static(path.join(__dirname, 'assets')));
-app.use("/assets", express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "../frontend/src/uploads")));
 app.use(bodyParser.json({ limit: "10mb" }));
 app.use(express.json());
 

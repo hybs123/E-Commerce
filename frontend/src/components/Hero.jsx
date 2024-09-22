@@ -8,11 +8,14 @@ const Hero = () => {
   const [img, setImg] = useState('');
   const [prodId, setProdId] = useState('');
 
+  const url = "https://sara-organics-backend.onrender.com"
+
   useEffect(() => {
     if (products.length > 0) {
       const latestProduct = products[products.length - 1]; // Get the latest product
       if (latestProduct && latestProduct.image && latestProduct.image.length > 0) {
         setImg(latestProduct.image[0]);
+        console.log(img);
         setProdId(latestProduct.id);
       }
     }
@@ -37,7 +40,7 @@ const Hero = () => {
       {/* Hero right side */}
         {prodId && img && (
         <Link className='w-full sm:w-1/2' to={`/product/${prodId}`}>
-          <img className='w-full' src={img} alt="Latest Arrival" />
+          <img className='w-full' src={`${url}/uploads/deer-2.jpg`} alt="Latest Arrival" />
         </Link>
       )}  
 

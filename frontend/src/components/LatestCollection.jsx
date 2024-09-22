@@ -12,6 +12,8 @@ const LatestCollection = () => {
     const {products,loading,navigate} = useContext(ShopContext);
     const [latestProducts,setLatestProducts] = useState([]);
 
+    const url = "https://sara-organics-backend.onrender.com"
+
     useEffect(() => {
       const prodlength = products.length;
       const prodstart = prodlength > 10 ? prodlength - 10 : 0;
@@ -60,7 +62,7 @@ const LatestCollection = () => {
                 
                 alt={item.productname}
                 className="aspect-1"
-                src={item.image[0]}
+                src={`${url}${item.image[0]}`}
               />
             </CardBody>
             <CardFooter className="text-small justify-between">

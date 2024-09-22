@@ -23,7 +23,7 @@ export const assets = {
 // Function to fetch products dynamically from the backend server
 export async function fetchProducts() {
     try {
-        const response = await fetch('http://localhost:3001/getProducts'); // Replace with your actual API URL
+        const response = await fetch('https://sara-organics-backend.onrender.com/getProducts'); // Replace with your actual API URL
         if (!response.ok) {
             throw new Error('Failed to fetch products');
         }

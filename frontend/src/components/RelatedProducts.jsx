@@ -7,7 +7,7 @@ import {Card, CardBody, CardFooter, Image,Skeleton} from "@nextui-org/react";
 const RelatedProducts = ({category,subCategory}) => {
     const {products,navigate} = useContext(ShopContext);
     const [related,setRelated] = useState([]);
-
+const url = "https://sara-organics-backend.onrender.com"
     useEffect(()=>{
 
         if(products.length > 0){
@@ -38,7 +38,7 @@ const RelatedProducts = ({category,subCategory}) => {
                 
                 alt={item.productname}
                 className="aspect-1"
-                src={item.image[0]}
+                src={`${url}${item.image[0]}`}
               />
             </CardBody>
             <CardFooter className="text-small justify-between">

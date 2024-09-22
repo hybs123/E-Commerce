@@ -15,7 +15,7 @@ const Product = () => {
   const [size, setSize] = useState();
   const [star, setstar] = useState(0);
   const [des,setDes] = useState(true);
-
+const url = "https://sara-organics-backend.onrender.com"
   const fetchProductData = async () => {
     const product = products.find(item => item.id === productId);
     if (product) {
@@ -68,7 +68,7 @@ useEffect(() => {
             {productData.image && productData.image.map((item) => (
               <div key={item}>
                 <img
-                  src={item}
+                  src={`${url}${item}`}
                   className='w-[24%] aspect-1 sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer pb-3'
                   onClick={() => setImage(item)}
                 />
@@ -76,7 +76,7 @@ useEffect(() => {
             ))}
           </div>
           <div className='w-full sm:w-[80%] '>
-            <img className='w-full aspect-1' src={image} alt={productData.name} />
+            <img className='w-full aspect-1' src={`${url}${image}`} alt={productData.name} />
           </div>
         </div>
 
