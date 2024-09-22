@@ -54,7 +54,7 @@ app.use(
 );
 app.use(
   cors({
-    origin: "https://sara-organics-cg47j7bx5-hybs123s-projects.vercel.app/",
+    origin: "https://sara-organics-bln8ep2ci-hybs123s-projects.vercel.app/",
     credentials: true,
   })
 );
