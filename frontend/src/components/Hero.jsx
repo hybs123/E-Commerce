@@ -40,7 +40,7 @@ const Hero = () => {
       {/* Hero right side */}
         {prodId && img && (
         <Link className='w-full sm:w-1/2' to={`/product/${prodId}`}>
-          <img className='w-full' src={`${url}/uploads/deer-2.jpg`} alt="Latest Arrival" />
+          <img className='w-full' src={`${url}${img}`} alt="Latest Arrival" />
         </Link>
       )}  
 

@@ -54,7 +54,7 @@ app.use(
 );
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://sara-organics-cg47j7bx5-hybs123s-projects.vercel.app/",
     credentials: true,
   })
 );
