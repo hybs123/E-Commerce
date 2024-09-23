@@ -1,4 +1,4 @@
-import React, { useContext, useState,useLocation } from 'react'
+import React, { useContext, useState } from 'react'
 import {assets} from '../assets/assets'
 import { Link, NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,6 +9,7 @@ import {faBars} from '@fortawesome/free-solid-svg-icons';
 import {faXmark} from '@fortawesome/free-solid-svg-icons';
 import { ShopContext } from '../context/ShopContext';
 import Cookies from 'js-cookie';
+import { useLocation } from 'react-router-dom';
 // import {famaglight} from '@fortawesome/free-regular-svg-icons'
 
 
