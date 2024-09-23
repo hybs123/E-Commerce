@@ -3,22 +3,47 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
 import { toast } from 'react-toastify';
-
+import Cookies from "js-cookie";
 const Backend = () => {
 
-  const {user,userloading,navigate} = useContext(ShopContext);
+  const {userloading,navigate} = useContext(ShopContext);
 
-  useEffect(()=>{
-    console.log("User in admin is:",user,userloading)
-    if(!userloading && user.username!=='haidersoni47@gmail.com'){
-      toast.error('Admin access denied');
-      navigate('/')
+  const [user,setUser] = useState({})
+
+
+  const [loading, setLoading] = useState(true); // State to track loading
+  const url = 'https://sara-organics-backend.onrender.com';
+
+  const checkAdmin = () => {
+    if (user.username !== 'haidersoni47@gmail.com') {
+      toast.error("Admin Access Denied");
+      navigate('/');
     }
-    else if(userloading && !user.username){
-      toast.error('Admin access denied');
-      navigate('/')
+  };
+
+  useEffect(() => {
+    axios.get("https://sara-organics-backend.onrender.com/checkAuth", {
+      headers: {
+        Authorization: Cookies.get("token"),
+      },
+      withCredentials: true
+    })
+    .then(response => {
+      setUser(response.data.rootUser);
+      console.log("User Authenticated in backend");
+    })
+    .catch(err => console.log(err))
+    .finally(() => {
+      setLoading(false); // Set loading to false after the request is done
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!loading && user) { // Only call checkAdmin when not loading and user is set
+      console.log(user); // This will show the updated user
+      checkAdmin();
     }
-  },[userloading])
+  }, [user, loading]);
 
   const [formData, setFormData] = useState({
     id: '',

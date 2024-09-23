@@ -383,6 +383,8 @@ app.post("/login", upload.none(), async (req, res) => {
 
 app.post("/uploads", upload.array("productImage", 10), async (req, res) => {
   try {
+    console.log("Uploaded files:", req.files);
+    console.log("Form data:", req.body);
     // Map through the uploaded files and create paths
     const imgPaths = req.files.map((file) => `/uploads/${file.filename}`);
 

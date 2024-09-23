@@ -2,28 +2,54 @@ import React, { useContext, useState, useEffect } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-
+import Cookies from "js-cookie";
 const Backendorders = () => {
   const { products } = useContext(ShopContext);
   const [ordersall, setOrdersAll] = useState([]);
   const [detailedOrders, setDetailedOrders] = useState([]);
+  const url = 'https://sara-organics-backend.onrender.com';
 
 
 
+  const {userloading,navigate} = useContext(ShopContext);
 
-  const {user,userloading,navigate} = useContext(ShopContext);
+  const [user,setUser] = useState({})
 
-  useEffect(()=>{
-    console.log("User in admin is:",user,userloading)
-    if(!userloading && user.username!=='haidersoni47@gmail.com'){
-      toast.error('Admin access denied');
-      navigate('/')
+  const [loading, setLoading] = useState(true); // State to track loading
+
+
+  const checkAdmin = () => {
+    if (user.username !== 'haidersoni47@gmail.com') {
+      toast.error("Admin Access Denied");
+      navigate('/');
     }
-    else if(userloading && !user.username){
-      toast.error('Admin access denied');
-      navigate('/')
+  };
+
+  useEffect(() => {
+    axios.get("https://sara-organics-backend.onrender.com/checkAuth", {
+      headers: {
+        Authorization: Cookies.get("token"),
+      },
+      withCredentials: true
+    })
+    .then(response => {
+      setUser(response.data.rootUser);
+      console.log("User Authenticated in backend");
+    })
+    .catch(err => console.log(err))
+    .finally(() => {
+      setLoading(false); // Set loading to false after the request is done
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!loading && user) { // Only call checkAdmin when not loading and user is set
+      console.log(user); // This will show the updated user
+      checkAdmin();
     }
-  },[userloading])
+  }, [user, loading]);
+
+  
 
   useEffect(() => {
     // Fetch orders from backend
@@ -76,7 +102,7 @@ const Backendorders = () => {
           <div className='py-4 border-t text-gray-700 border-b grid sm:grid-cols-[2fr_4fr] items-center gap-2' key={index}>
             {item.productDetails && item.productDetails.image && (
               <div>
-                <img className='' src={item.productDetails.image[0]} alt={item.productDetails.productname} />
+                <img className='' src={`${url}${item.productDetails.image[0]}`} alt={item.productDetails.productname} />
                 <p><strong>Product Name:</strong> {item.productDetails.productname}</p>
                 <p><strong>Price:</strong> {item.productDetails.price}</p>
                 {/* Render additional product details as needed */}

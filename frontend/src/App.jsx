@@ -19,7 +19,7 @@ import Profile from "./pages/Profile";
 import ScrollToTop from "./components/Scrolltotop";
 import Backendorders from "./pages/Backendorders";
 import Adminpanel from "./pages/Adminpanel";
-import Backend from "./pages/Backendorders";
+import Backend from "./pages/Backend";
 
 // import ScrollToTop from './components/Scrolltotop'
 

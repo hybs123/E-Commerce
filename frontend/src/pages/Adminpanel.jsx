@@ -3,32 +3,51 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBill, faCartShopping, faClock } from '@fortawesome/free-solid-svg-icons';
 import { ShopContext } from '../context/ShopContext';
 import axios from 'axios';
+import Cookies from "js-cookie";
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const AdminPanel = () => {
 
-  const { products,loading,currency,user,navigate,userloading,orders,admin } = useContext(ShopContext);
+  const { products,currency,navigate,userloading,orders,admin } = useContext(ShopContext);
   const [ordersall, setOrdersAll] = useState([]);
   const [detailedOrders, setDetailedOrders] = useState([]);
   const [totalsales, settotalsales] = useState([]);
   const [totalrevenue,setTotalrevenue] = useState(0);
+  const [user,setUser] = useState({})
+  const [loading, setLoading] = useState(true); // State to track loading
+  const url = 'https://sara-organics-backend.onrender.com';
 
-
-  const checkadmin = ()=>{
-    console.log(admin)
-    if(!admin){
-      toast.error('Admin Access Denied');
-      navigate('/')
+  const checkAdmin = () => {
+    if (user.username !== 'haidersoni47@gmail.com') {
+      toast.error("Admin Access Denied");
+      navigate('/');
     }
-  }
+  };
 
-  useEffect(()=>{
-    if(!userloading){
-      console.log("useeffect admin is",admin)
-      checkadmin();
+  useEffect(() => {
+    axios.get("https://sara-organics-backend.onrender.com/checkAuth", {
+      headers: {
+        Authorization: Cookies.get("token"),
+      },
+      withCredentials: true
+    })
+    .then(response => {
+      setUser(response.data.rootUser);
+      console.log("User Authenticated in backend");
+    })
+    .catch(err => console.log(err))
+    .finally(() => {
+      setLoading(false); // Set loading to false after the request is done
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!loading && user) { // Only call checkAdmin when not loading and user is set
+      console.log(user); // This will show the updated user
+      checkAdmin();
     }
-  },[admin,userloading])
+  }, [user, loading]);
 
 
   useEffect(() => {
@@ -55,18 +74,19 @@ const AdminPanel = () => {
       settotalsales(filteredSales);
     }
   }, [detailedOrders]);
-  useEffect(()=>{
+
+ useEffect(() => {
     let temp = 0;
-    if(totalsales){
-      totalsales.forEach(element => {
-      
-      
-        temp+=element.productDetails.price
-      
-      });
-      setTotalrevenue(temp);
+    if (Array.isArray(totalsales) && totalsales.length > 0) {
+        totalsales.forEach(element => {
+            if (element.productDetails && typeof element.productDetails.price === 'number') {
+                temp += element.productDetails.price;
+            }
+        });
+        setTotalrevenue(temp);
     }
-  },[totalsales])
+}, [totalsales]);
+
 
   
 
@@ -138,7 +158,7 @@ const AdminPanel = () => {
               detailedOrders.slice(detailedOrders.length-3,detailedOrders.length).reverse().map((item,index) => (
                 <div key={index} className="grid grid-cols-6 gap-4 bg-yellow-100 my-3 text-center">
     
-                  <img className='col-span-1 aspect-1' src={item.productDetails.image[0]} alt={item.productDetails.productname} />
+                  <img className='col-span-1 aspect-1' src={`${url}${item.productDetails.image[0]}`} alt={item.productDetails.productname} />
                   <p className='col-span-1 md:text-[16px] text-[10px]'>{item.productDetails.productname}</p>
                   <p className='col-span-2 md:text-[16px] text-[10px]'>Buyer: {item.username}</p>
                   <p className='col-span-1 md:text-[16px] text-[10px]'>Size: {item.orderitemsize}</p>

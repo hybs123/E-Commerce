@@ -97,7 +97,7 @@ const Navbar = () => {
     <div className='group relative'>
 
     
-    {!user ?
+    {!user.username ?
 
     <Link to={'/login'}><FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/></Link> : <FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/>
     }

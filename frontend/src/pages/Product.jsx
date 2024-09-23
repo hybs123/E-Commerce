@@ -69,7 +69,7 @@ useEffect(() => {
               <div key={item}>
                 <img
                   src={`${url}${item}`}
-                  className='aspect-1 w-full sm:mb-3 flex-shrink-0 cursor-pointer pb-3'
+                  className='aspect-1 w-1/2 sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer pb-3'
                   onClick={() => setImage(item)}
                 />
               </div>
