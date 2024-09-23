@@ -18,7 +18,7 @@ import authenticateJwt from "./Tokencheck.js";
 import cookieParser from "cookie-parser";
 import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
-import razorpay from 'razorpay';
+import Razorpay from 'razorpay';
 import nodemailer from "nodemailer";
 import crypto from "crypto";
 
@@ -28,10 +28,10 @@ const uri =
 const dot = dotenv.config();
 
 const __dirname = path.resolve();
-// const razorpay = new Razorpay({
-//   key_id: process.env.REACT_APP_RAZORPAY_ID_KEY, // Replace with your Razorpay key ID
-//   key_secret: process.env.REACT_APP_RAZORPAY_SECRET_KEY, // Replace with your Razorpay key secret
-// });
+const razorpay = new Razorpay({
+  key_id: process.env.REACT_APP_RAZORPAY_ID_KEY, // Replace with your Razorpay key ID
+  key_secret: process.env.REACT_APP_RAZORPAY_SECRET_KEY, // Replace with your Razorpay key secret
+});
 
 app.use(express.urlencoded({ extended: false }));
 
