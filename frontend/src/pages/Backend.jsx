@@ -113,7 +113,7 @@ const Backend = () => {
 
     // Append form fields
     Object.keys(formData).forEach(key => {
-      form.append(key, formData[key]);
+        form.append(key, formData[key]);
     });
 
     // Append sizes array
@@ -126,16 +126,19 @@ const Backend = () => {
     files.forEach(file => form.append('productImage', file));
 
     try {
-      const response = await axios.post('https://sara-organics-backend.onrender.com/uploads', form, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      console.log('Form data successfully submitted:', response.data);
+        const response = await axios.post('https://sara-organics-backend.onrender.com/uploads', form, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        console.log('Form data successfully submitted:', response.data);
+        toast.success('Upload successful!');
     } catch (error) {
-      console.error('Error submitting form:', error);
+        console.error('Error submitting form:', error);
+        toast.error('Upload failed: ' + error.response?.data?.error || 'Internal Server Error');
     }
-  };
+};
+
 
   return (
     <div>
