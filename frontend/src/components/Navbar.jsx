@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState,useLocation } from 'react'
 import {assets} from '../assets/assets'
 import { Link, NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,6 +18,26 @@ const Navbar = () => {
   const {setShowSearch,getCartCount,user,setUser} = useContext(ShopContext);
 
   const [visible,setVisible] = useState(false);
+  const [searchshow,setsearchshow] = useState(false);
+
+
+  const location = useLocation();
+
+  useEffect(()=>{
+    
+    console.log(location.pathname);
+
+    if(location.pathname.includes('collection')){
+      setVisible(true);
+      setsearchshow(true);
+      
+    }
+    else{
+      setVisible(false);
+      setsearchshow(false)
+    }
+
+  },[location])
 
 
 
@@ -65,15 +85,21 @@ const Navbar = () => {
     </ul>
 
     <div className='flex text-[20px] item-center gap-6'>
+    {searchshow &&
+
     <div>
 
     <FontAwesomeIcon onClick={()=>setShowSearch(true)} icon={faMagnifyingGlass} className=' cursor-pointer' />
     </div>
+    }
 
     <div className='group relative'>
 
     
-    <Link to={'/login'}><FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/></Link>
+    {user ?
+
+    <Link to={'/login'}><FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/></Link> : <FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/>
+    }
     
       
       <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4' >
