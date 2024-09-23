@@ -29,12 +29,12 @@ const Navbar = () => {
     console.log(location.pathname);
 
     if(location.pathname.includes('collection')){
-      setVisible(true);
+      
       setsearchshow(true);
       
     }
     else{
-      setVisible(false);
+      
       setsearchshow(false)
     }
 
@@ -97,7 +97,7 @@ const Navbar = () => {
     <div className='group relative'>
 
     
-    {user ?
+    {!user ?
 
     <Link to={'/login'}><FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/></Link> : <FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/>
     }
