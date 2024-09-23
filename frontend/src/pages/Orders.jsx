@@ -37,11 +37,11 @@ const Orders = () => {
         item.track === "Delivered to your address" || item.track === "Cancelled by you or returning"
       );
 
-      console.log("Filtered Show Orders:", filteredShowOrders);
-      console.log("Filtered Past Orders:", filteredPastOrders);
-
+      
       setordersshow(filteredShowOrders);
       setOrdersPast(filteredPastOrders);
+      console.log("Filtered Show Orders:", ordersshow);
+      console.log("Filtered Past Orders:", orderspast);
     };
 
     if (orders.length > 0 && !orderloading) {
