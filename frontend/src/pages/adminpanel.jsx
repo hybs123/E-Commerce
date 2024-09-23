@@ -121,14 +121,14 @@ const AdminPanel = () => {
 
   return (
     <div className='grid grid-cols-6 w-full gap-2'>
-      <div className='bg-gray-300 col-span-1 flex flex-col items-center'>
+      <div className='bg-gray-300 col-span-6 md:col-span-1 flex flex-col items-center'>
         <ul>
          <Link to={'/adminpanel'}> <li>Dashboard</li></Link>
           <Link to={'/backendorders'}><li>Orders</li></Link>
          <Link to={'/backend'}> <li>Products</li></Link>
         </ul>
       </div>
-      <div className='col-span-5 grid grid-cols-3 gap-2'>
+      <div className='md:col-span-5 col-span-6 grid grid-cols-3 gap-2'>
         <div className='bg-blue-200 col-span-1 flex flex-row items-center justify-evenly md:text-[20px] min-h-[200px] rounded-xl text-yellow-900'>
           <FontAwesomeIcon className='text-[40px]' icon={faMoneyBill} />
           <div>
