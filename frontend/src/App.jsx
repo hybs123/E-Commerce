@@ -17,9 +17,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Profile from "./pages/Profile";
 import ScrollToTop from "./components/Scrolltotop";
-import Backendorders from "./pages/Backendorders";
-import Adminpanel from "./pages/Adminpanel";
-import Backend from "./pages/Backend";
+import Backendorders from "./pages/backendorders";
+import Adminpanel from "./pages/adminpanel";
+import Backend from "./pages/backend";
 
 // import ScrollToTop from './components/Scrolltotop'
 
