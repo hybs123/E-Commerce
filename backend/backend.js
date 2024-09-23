@@ -586,7 +586,7 @@ app.post("/api/create-order", async (req, res) => {
       receipt: crypto.randomBytes(10).toString("hex"), // Generate a random receipt ID
     };
 
-    // const order = await razorpay.orders.create(options);
+    const order = await razorpay.orders.create(options);
     // console.log("Razorpay Order:", order); // Log the created order
 
     res.json({
