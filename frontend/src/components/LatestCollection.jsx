@@ -56,7 +56,7 @@ const LatestCollection = () => {
 
        
             <CardBody className="overflow-visible p-0">
-               <img src={`${url}${item.image[0]}`} />
+              
               <Image
                 shadow="sm"
                 radius="lg"
