@@ -37,7 +37,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.json());
 // app.use('/assets', express.static(path.join(__dirname, 'assets')));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(path.join(__dirname, '../frontend/src/uploads')));
 app.use(bodyParser.json({ limit: "10mb" }));
 app.use(express.json());
 
@@ -64,7 +64,7 @@ app.use(cookieParser());
 // Multer setup for file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "uploads")); // Ensure this path is correct
+    cb(null, path.join(__dirname, "../frontend/src/uploads")); // Ensure this path is correct
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
