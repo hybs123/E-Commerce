@@ -18,7 +18,7 @@ import authenticateJwt from "./Tokencheck.js";
 import cookieParser from "cookie-parser";
 import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
-// import Razorpay from 'razorpay';
+import razorpay from 'razorpay';
 import nodemailer from "nodemailer";
 import crypto from "crypto";
 
