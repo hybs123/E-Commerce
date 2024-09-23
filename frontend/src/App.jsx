@@ -17,9 +17,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Profile from "./pages/Profile";
 import ScrollToTop from "./components/Scrolltotop";
-import Backendorders from "./pages/backendorders";
-import Adminpanel from "./pages/adminpanel";
 import Backend from "./pages/backend";
+import Backendorders from "./pages/backendorders";
+import AdminPanel from "./pages/adminpanel";
+
 
 // import ScrollToTop from './components/Scrolltotop'
 
@@ -41,10 +42,11 @@ const App = () => {
         <Route path="/placeorder" element={<Placeorder />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/backend" element={<Backend />} />
-
         <Route path="/backendorders" element={<Backendorders />} />
+        <Route path="/adminpanel" element={<AdminPanel />} />
+        
         <Route path="/profile" element={<Profile />} />
-        <Route path="/adminpanel" element={<Adminpanel />} />
+        
       </Routes>
       <Footer />
     </div>
