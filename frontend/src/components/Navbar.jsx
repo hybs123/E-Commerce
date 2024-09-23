@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { faCircleUser } from '@fortawesome/free-regular-svg-icons';
 import {faBagShopping} from '@fortawesome/free-solid-svg-icons';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 import {faXmark} from '@fortawesome/free-solid-svg-icons';
@@ -99,17 +100,21 @@ const Navbar = () => {
     
     {!user.username ?
 
-    <Link to={'/login'}><FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/></Link> : <FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/>
+    <Link to={'/login'}><FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/></Link> : <FontAwesomeIcon className='profile cursor-pointer' icon={faCircleUser} />
     }
     
-      
+    {user.username ?
+
       <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4' >
       <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded'>
       <Link to={'/profile'}> <p className='cursor-pointer hover:text-black'>My Profile</p></Link> 
       <Link to={'/orders'}>  <p className='cursor-pointer hover:text-black'>Orders</p></Link>
         <p onClick={()=>logoutuser()} className='cursor-pointer hover:text-black'>Logout</p>
       </div>
-    </div>
+    </div> : null
+    }
+      
+
     </div>
      
     <Link to='/cart' className='relative'>

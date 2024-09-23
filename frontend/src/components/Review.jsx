@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ShopContext } from '../context/ShopContext';
+import { toast } from 'react-toastify';
 
 const Review = (props) => {
     const { review, setReview,user,reviewloading,setreviewloading,renderStars } = useContext(ShopContext);
@@ -8,9 +9,14 @@ const Review = (props) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if(!user.username){
+            toast.error("User not logged in. Please Login first.")
+            return;
+        }
     
         if (!rating || !reviewText) {
-            alert('Please fill out both fields.');
+            toast.error('Please fill out both fields.');
             return;
         }
     

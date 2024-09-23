@@ -7,14 +7,17 @@ import CartTotal from '../components/CartTotal';
 import {Card, CardBody, CardFooter, Image,Skeleton} from "@nextui-org/react";
 
 const Cart = () => {
-  const { currency, products, cartitems, updatequantity, navigate, cart,setCart } = useContext(ShopContext);
+  const { currency, products, cartitems,user, updatequantity, navigate, cart,setCart } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
   const url = 'https://sara-organics-backend.onrender.com';
 
   useEffect(() => {
      
       
-
+    if(!user.username){
+      toast.error('User not logged in cannot access cart.');
+      navigate('/login');
+    }
       // Start with existing cart
       let tempData = [...cart];
 
@@ -62,6 +65,7 @@ const Cart = () => {
   };
 
   return (
+
     <div className='border-t pt-14'>
       <div className='text-2xl mb-3'>
         <Title text1={'YOUR'} text2={'CART'} />

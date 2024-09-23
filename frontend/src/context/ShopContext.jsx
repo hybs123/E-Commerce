@@ -179,6 +179,10 @@ const ShopContextProvider = (props)=> {
             toast.error('Select Product Size');
             return;
         }
+        if(!user.username){
+            toast.error('User not logged in cannot access cart.');
+            navigate('/login');
+        }
         
         console.log('Adding to cart:', itemId,productname, size);
     
@@ -202,6 +206,7 @@ const ShopContextProvider = (props)=> {
         console.log('Updated cartData:', cartData);
     
         // Update the state with the modified cartData
+        toast.success("Item added to cart")
         
         setcartpush(true);
         setCart(cartData);

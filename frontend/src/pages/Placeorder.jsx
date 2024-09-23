@@ -26,6 +26,10 @@ const Placeorder = () => {
   }, []);
 
   const handlePayment = async () => {
+    if(!user.username){
+      toast.error('User not logged in cannot access checkout.');
+      navigate('/login');
+    }
     if (method === "cod") {
       orderplaced(user, method, zip);
       navigate("/orders");
