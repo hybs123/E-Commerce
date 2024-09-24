@@ -69,18 +69,18 @@ cloudinary.config({
 });
 
 // Multer setup for file uploads
-const storage = cloudinaryStorage({
+const storage = new cloudinaryStorage({
   cloudinary: cloudinary,
-  allowedFormats: ["jpg", "png", "jpeg", "gif"], // Specify allowed formats
+  allowedFormats: ['jpg', 'png', 'jpeg', 'gif'],
   transformation: [
     {
-      width: 500, // Desired width
-      height: 500, // Desired height
-      crop: 'fill', // Crop to fit the specified dimensions
+      width: 500,
+      height: 500,
+      crop: 'fill',
     },
   ],
   filename: (req, file, cb) => {
-    cb(null, file.originalname); // The filename to use in Cloudinary
+    cb(null, file.originalname); // Use the original filename
   },
 });
 
