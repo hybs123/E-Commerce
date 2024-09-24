@@ -69,7 +69,7 @@ cloudinary.config({
 });
 
 // Multer setup for file uploads
-const storage = new cloudinaryStorage({
+const storage = cloudinaryStorage({
   cloudinary: cloudinary,
   allowedFormats: ['jpg', 'png', 'jpeg', 'gif'],
   transformation: [
