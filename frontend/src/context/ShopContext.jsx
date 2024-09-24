@@ -182,6 +182,7 @@ const ShopContextProvider = (props)=> {
         if(!user.username){
             toast.error('User not logged in cannot access cart.');
             navigate('/login');
+            return;
         }
         
         console.log('Adding to cart:', itemId,productname, size);
