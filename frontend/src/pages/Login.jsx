@@ -47,7 +47,7 @@ const Login = () => {
         console.log('Success:', result);
 
         Cookies.set('token', result.response, { expires: 7, secure: true, sameSite: 'Strict' });
-       
+       navigate('/');
         window.location.reload();
 
     } catch (error) {
