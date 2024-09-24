@@ -52,6 +52,8 @@ const Cart = () => {
       
   }, [cart]);
 
+ 
+
   const handleQuantityChange = (itemId, size, e) => {
     console.log("Handle quantity in cart was called");
     const newQuantity = Number(e.target.value);
@@ -61,6 +63,16 @@ const Cart = () => {
 
 
       updatequantity(itemId, size, 0);
+    }
+  };
+
+  const placeorder = () =>{
+    if(cartData.length > 0){
+      navigate('/placeorder')
+    }
+    else{
+      toast.error("No items in the cart.")
+      navigate('/');
     }
   };
 
@@ -104,7 +116,7 @@ const Cart = () => {
                   className='border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1'
                   type='number'
                   min={1}
-                  value={item.quantity} // Controlled component
+                  value={item.quantity} 
                 />
                 <FontAwesomeIcon
                   onClick={() => updatequantity(item.itemId, item.size, 0)}
@@ -121,7 +133,7 @@ const Cart = () => {
         <div className='w-full sm:w-[450px]'>
           <CartTotal />
           <div className='w-full text-end'>
-            <button onClick={() => navigate('/placeorder')} className='bg-black text-white text-sm my-8 px-8 py-3'>PROCEED TO CHECKOUT</button>
+            <button onClick={() => placeorder()} className='bg-black text-white text-sm my-8 px-8 py-3'>PROCEED TO CHECKOUT</button>
           </div>
         </div>
       </div>
