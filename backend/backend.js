@@ -22,7 +22,7 @@ import Razorpay from 'razorpay';
 import nodemailer from "nodemailer";
 import crypto from "crypto";
 import { v2 as cloudinary } from "cloudinary";
-import cloudinaryStorage from "multer-storage-cloudinary";
+import {CloudinaryStorage} from "multer-storage-cloudinary";
 
 const app = express();
 const uri =
@@ -69,7 +69,7 @@ cloudinary.config({
 });
 
 // Multer setup for file uploads
-const storage = cloudinaryStorage({
+const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   allowedFormats: ['jpg', 'png', 'jpeg', 'gif'],
   transformation: [
