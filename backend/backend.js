@@ -21,6 +21,8 @@ import bodyParser from "body-parser";
 import Razorpay from 'razorpay';
 import nodemailer from "nodemailer";
 import crypto from "crypto";
+import { v2 as cloudinary } from "cloudinary";
+import cloudinaryStorage from "multer-storage-cloudinary";
 
 const app = express();
 const uri =
@@ -54,26 +56,36 @@ app.use(
 );
 app.use(
   cors({
-    // origin: "http://localhost:5173",
-    origin: "https://sara-organics.onrender.com",
+    origin: "http://localhost:5173",
+    // origin: "https://sara-organics.onrender.com",
     credentials: true,
   })
 );
 app.use(cookieParser());
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME, // Your Cloudinary cloud name
+  api_key: process.env.CLOUDINARY_API_KEY,       // Your Cloudinary API key
+  api_secret: process.env.CLOUDINARY_API_SECRET, // Your Cloudinary API secret
+});
 
 // Multer setup for file uploads
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "../frontend/src/uploads")); // Ensure this path is correct
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
+const storage = cloudinaryStorage({
+  cloudinary: cloudinary,
+  allowedFormats: ["jpg", "png", "jpeg", "gif"], // Specify allowed formats
+  transformation: [
+    {
+      width: 500, // Desired width
+      height: 500, // Desired height
+      crop: 'fill', // Crop to fit the specified dimensions
+    },
+  ],
+  filename: (req, file, cb) => {
+    cb(null, file.originalname); // The filename to use in Cloudinary
   },
 });
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
-});
+
+
+const upload = multer({ storage: storage });
 
 mongoose.connect(uri);
 
@@ -391,16 +403,17 @@ app.post("/uploads", upload.array("productImage", 10), async (req, res) => {
   try {
     console.log("Uploaded files:", req.files);
     console.log("Form data:", req.body);
-    // Map through the uploaded files and create paths
-    const imgPaths = req.files.map((file) => `/uploads/${file.filename}`);
 
-    // Create a new product model with form data and image paths
+    // Map through the uploaded files to get URLs
+    const imgUrls = req.files.map((file) => file.secure_url);// Get secure URLs from Cloudinary
+
+    // Create a new product model with form data and image URLs
     const product = new productModel({
       id: req.body.id,
       productname: req.body.productname,
       description: req.body.description,
       price: req.body.price,
-      image: imgPaths, // Array of image paths from the file upload
+      image: imgUrls, // Array of image URLs from Cloudinary
       category: req.body.category,
       subCategory: req.body.subCategory,
       sizes: req.body.sizes, // Assumes sizes is an array
@@ -414,12 +427,10 @@ app.post("/uploads", upload.array("productImage", 10), async (req, res) => {
     console.log("New product saved:", savedProduct);
 
     // Return success response
-    res
-      .status(201)
-      .json({
-        message: "Product uploaded successfully",
-        product: savedProduct,
-      });
+    res.status(201).json({
+      message: "Product uploaded successfully",
+      product: savedProduct,
+    });
   } catch (error) {
     console.error("Error saving product:", error);
     res.status(500).json({ error: "Failed to upload product" });
