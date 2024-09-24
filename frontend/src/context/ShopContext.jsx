@@ -64,7 +64,7 @@ const ShopContextProvider = (props)=> {
         })
             .then(response => {setUser(response.data.rootUser);setCart(response.data.rootUser.cart || []);console.log("User Authenticated");setuserloading(false)})
             
-            .catch(err => console.log(err))
+            .catch(err => {setuserloading(false);console.log(err)})
             
             
     },[])
