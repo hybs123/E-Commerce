@@ -8,7 +8,7 @@ const BestSeller = () => {
 
     const {products,loading,navigate} = useContext(ShopContext);
     const [bestseller,setBestseller] = useState([]);
-    const url = "https://sara-organics-backend.onrender.com"
+   
 
     useEffect(()=>{
         const bestproduct = products.filter((item)=>(item.bestseller));
@@ -49,7 +49,7 @@ const BestSeller = () => {
                 
                 alt={item.productname}
                 className="aspect-1"
-                src={`${url}${item.image[0]}`}
+                src={`${item.image[0]}`}
               />
             </CardBody>
             <CardFooter className="text-small justify-between">

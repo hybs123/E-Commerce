@@ -8,8 +8,7 @@ const Hero = () => {
   const [img, setImg] = useState('');
   const [prodId, setProdId] = useState('');
 
-  const url = "https://sara-organics-backend.onrender.com"
-  const url2 = "cloudinary://399922269683698:GZZKiE0U4KUjgKIBZ3DX9OEdoD4@dcwniwn2m"
+
 
   useEffect(() => {
     if (products.length > 0) {
@@ -41,10 +40,9 @@ const Hero = () => {
       {/* Hero right side */}
         {prodId && img && (
         <Link className='w-full sm:w-1/2' to={`/product/${prodId}`}>
-          <p>{img}</p>
+          
           <img className='w-full' src={`${img}`} alt="Latest Arrival" />
-          <p>{url2}{img}</p>
-          <img className='w-full' src={`${url2}${img}`} alt="Latest Arrival" />
+         
         </Link>
       )}  
 

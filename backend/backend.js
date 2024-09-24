@@ -56,8 +56,8 @@ app.use(
 );
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    // origin: "https://sara-organics.onrender.com",
+    // origin: "http://localhost:3000",
+    origin: "https://sara-organics.onrender.com",
     credentials: true,
   })
 );
@@ -405,7 +405,7 @@ app.post("/uploads", upload.array("productImage", 10), async (req, res) => {
     console.log("Form data:", req.body);
 
     // Map through the uploaded files to get URLs
-    const imgUrls = req.files.map((file) => file.secure_url);// Get secure URLs from Cloudinary
+    const imgUrls = req.files.map((file) => file.path);// Get secure URLs from Cloudinary
 
     // Create a new product model with form data and image URLs
     const product = new productModel({

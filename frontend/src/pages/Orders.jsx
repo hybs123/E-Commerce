@@ -6,7 +6,7 @@ const Orders = () => {
   const { products, currency, orders, orderloading } = useContext(ShopContext);
   const [ordersshow, setordersshow] = useState([]);
   const [orderspast, setOrdersPast] = useState([]);
-  const url = 'https://sara-organics-backend.onrender.com';
+
 
   const getProductDetails = (productId) => {
     return products.find(product => product._id === productId);
@@ -67,7 +67,7 @@ const Orders = () => {
                     {item.prodObject ? (
                       <div className='flex items-center gap-6'>
                           
-                          <img className='w-16 sm:w-20 aspect-1' src={`${url}${item.prodObject.image[0]}`} alt={item.prodObject.productname} />
+                          <img className='w-16 sm:w-20 aspect-1' src={`${item.prodObject.image[0]}`} alt={item.prodObject.productname} />
                       <div>
                         <p className='text-sm sm:text-lg font-medium'>{item.prodObject.productname}</p>
                         <div className='flex flex-col sm:flex-row items-start sm:gap-5 gap-1 mt-2'>

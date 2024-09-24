@@ -19,11 +19,7 @@ const Profile = () => {
 
     return (
         <div>
-            {img ? (
-                <img className='max-w-[200px] border border-red-300 rounded-full' src={img} alt="Profile" />
-            ) : (
-                <p>No image available</p>
-            )}
+            
             <p>{user.name}</p>
             <p>{user.username}</p>
             <p>{user.Address}</p>

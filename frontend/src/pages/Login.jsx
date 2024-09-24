@@ -88,13 +88,7 @@ const Login = () => {
 
       {currentState !== 'login' && (
         <>
-          <input
-            type='file'
-            name='image'
-            onChange={handleChange}
-            className='w-full px-3 py-2 border border-gray-800'
-            placeholder='Upload Image Here'
-          />
+          
           <input
             type='text'
             name='name'

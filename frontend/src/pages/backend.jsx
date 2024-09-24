@@ -12,7 +12,7 @@ const Backend = () => {
 
 
   const [loading, setLoading] = useState(true); // State to track loading
-  const url = 'https://sara-organics-backend.onrender.com';
+ 
 
   const checkAdmin = () => {
     if (user.username !== 'haidersoni47@gmail.com') {

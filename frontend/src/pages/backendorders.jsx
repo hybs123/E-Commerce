@@ -7,7 +7,7 @@ const Backendorders = () => {
   const { products } = useContext(ShopContext);
   const [ordersall, setOrdersAll] = useState([]);
   const [detailedOrders, setDetailedOrders] = useState([]);
-  const url = 'https://sara-organics-backend.onrender.com';
+  
 
 
 
@@ -102,7 +102,7 @@ const Backendorders = () => {
           <div className='py-4 border-t text-gray-700 border-b grid sm:grid-cols-[2fr_4fr] items-center gap-2' key={index}>
             {item.productDetails && item.productDetails.image && (
               <div>
-                <img className='' src={`${url}${item.productDetails.image[0]}`} alt={item.productDetails.productname} />
+                <img className='' src={`${item.productDetails.image[0]}`} alt={item.productDetails.productname} />
                 <p><strong>Product Name:</strong> {item.productDetails.productname}</p>
                 <p><strong>Price:</strong> {item.productDetails.price}</p>
                 {/* Render additional product details as needed */}

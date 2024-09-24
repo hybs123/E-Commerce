@@ -16,7 +16,7 @@ const AdminPanel = () => {
   const [totalrevenue,setTotalrevenue] = useState(0);
   const [user,setUser] = useState({})
   const [loading, setLoading] = useState(true); // State to track loading
-  const url = 'https://sara-organics-backend.onrender.com';
+ 
 
   const checkAdmin = () => {
     if (user.username !== 'haidersoni47@gmail.com') {
@@ -158,7 +158,7 @@ const AdminPanel = () => {
               detailedOrders.slice(detailedOrders.length-3,detailedOrders.length).reverse().map((item,index) => (
                 <div key={index} className="grid grid-cols-6 gap-4 bg-yellow-100 my-3 text-center">
     
-                  <img className='col-span-1 aspect-1' src={`${url}${item.productDetails.image[0]}`} alt={item.productDetails.productname} />
+                  <img className='col-span-1 aspect-1' src={`${item.productDetails.image[0]}`} alt={item.productDetails.productname} />
                   <p className='col-span-1 md:text-[16px] text-[10px]'>{item.productDetails.productname}</p>
                   <p className='col-span-2 md:text-[16px] text-[10px]'>Buyer: {item.username}</p>
                   <p className='col-span-1 md:text-[16px] text-[10px]'>Size: {item.orderitemsize}</p>
