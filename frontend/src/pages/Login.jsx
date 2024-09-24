@@ -48,7 +48,7 @@ const Login = () => {
 
         Cookies.set('token', result.response, { expires: 7, secure: true, sameSite: 'Strict' });
        
-        window.location.href = '/';
+        window.location.reload();
 
     } catch (error) {
         console.error('Error:', error.message);
