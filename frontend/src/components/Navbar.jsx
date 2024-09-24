@@ -97,22 +97,13 @@ const Navbar = () => {
 
     <div className='group relative'>
 
-    {
-      !userloading ? 
-      <div>
-      {!user.username  ?
+    
+    {!user.username  ?
 
-      <Link to={'/login'}><FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/></Link> : <FontAwesomeIcon className='profile cursor-pointer' icon={faCircleUser} />
-}
-      </div>
-     : <p>loading</p>
+    <Link to={'/login'}><FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/></Link> : <FontAwesomeIcon className='profile cursor-pointer' icon={faCircleUser} />
     }
     
-    {
-      !userloading ? 
-      <div>
-
-    {user.username ?
+    {user.username  ?
 
       <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4' >
       <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded'>
@@ -121,8 +112,6 @@ const Navbar = () => {
         <p onClick={()=>logoutuser()} className='cursor-pointer hover:text-black'>Logout</p>
       </div>
     </div> : null
-    }
-      </div> : null
     }
       
 

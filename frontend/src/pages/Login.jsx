@@ -26,7 +26,7 @@ const Login = () => {
         name: formData.name,
         address: formData.address,
         phone: formData.phone,
-        image: formData.image,
+        
     };
 
     try {
@@ -48,7 +48,7 @@ const Login = () => {
 
         Cookies.set('token', result.response, { expires: 7, secure: true, sameSite: 'Strict' });
        
-        navigate('/');
+        window.location.href = '/';
 
     } catch (error) {
         console.error('Error:', error.message);
