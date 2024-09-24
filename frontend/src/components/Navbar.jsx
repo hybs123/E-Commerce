@@ -17,7 +17,7 @@ import { useLocation } from 'react-router-dom';
 const Navbar = () => {
 
 
-  const {setShowSearch,getCartCount,user,setUser} = useContext(ShopContext);
+  const {setShowSearch,getCartCount,user,setUser,userloading,setuserloading} = useContext(ShopContext);
 
   const [visible,setVisible] = useState(false);
   const [searchshow,setsearchshow] = useState(false);
@@ -97,12 +97,21 @@ const Navbar = () => {
 
     <div className='group relative'>
 
-    
-    {!user.username ?
+    {
+      !userloading ? 
+      <div>
+      {!user.username  ?
 
-    <Link to={'/login'}><FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/></Link> : <FontAwesomeIcon className='profile cursor-pointer' icon={faCircleUser} />
+      <Link to={'/login'}><FontAwesomeIcon icon={faUser} className='profile cursor-pointer'/></Link> : <FontAwesomeIcon className='profile cursor-pointer' icon={faCircleUser} />
+}
+      </div>
+     : <p>loading</p>
     }
     
+    {
+      !userloading ? 
+      <div>
+
     {user.username ?
 
       <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4' >
@@ -112,6 +121,8 @@ const Navbar = () => {
         <p onClick={()=>logoutuser()} className='cursor-pointer hover:text-black'>Logout</p>
       </div>
     </div> : null
+    }
+      </div> : null
     }
       
 
