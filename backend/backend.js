@@ -96,6 +96,12 @@ const productSchema = new mongoose.Schema({
 
 const productModel = mongoose.model("product", productSchema); // Assuming "VCard" is the correct collection name
 
+const newsSchema = new mongoose.Schema({
+  username:String
+});
+
+const newsModel = mongoose.model("newsletter", newsSchema); // Assuming "VCard" is the correct collection name
+
 app.use(passport.initialize());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -615,6 +621,41 @@ app.post("/logout", (req, res) => {
     res.status(200).json({ message: "Logout successful" });
   });
 });
+
+
+app.post("/newsletter",async(req,res)=>{
+  const username = req.body.username;
+
+  if (!username) {
+    return res.status(404).json({ error: "Please enter username" });
+  }
+
+  try {
+    const newNewsletter = new newsModel({
+      username:username
+    })
+
+    await newNewsletter.save();
+    console.log("Newsletter saved successfully");
+    res.status(200).json({message:"Succesfully saved newsletter"});
+
+
+
+
+  } catch (error) {
+    console.log("Error saving newsletter");
+    res.status(500).json({ error: "An error occurred while saving newsletter" });
+  }
+
+  
+
+
+
+})
+    
+    
+ 
+
 
 app.listen(3001, () => {
   console.log("Listening on port 3001");
