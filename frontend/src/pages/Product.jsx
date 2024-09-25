@@ -16,6 +16,13 @@ const Product = () => {
   const [star, setStar] = useState(0);
   const [loading, setLoading] = useState(true);
 
+
+  useEffect(() => {
+    if (products.length > 0) {
+      fetchProductData();
+    }
+  }, [products]);
+
   const fetchProductData = async () => {
     console.log('Available products:', products); // Log all products
     console.log('Fetching product with ID:', productId);
@@ -42,10 +49,7 @@ const Product = () => {
     setStar(Math.round(averageRating));
   };
 
-  useEffect(() => {
-    
-    fetchProductData();
-  }, [productId]);
+ 
 
   useEffect(() => {
     calculateStars();
