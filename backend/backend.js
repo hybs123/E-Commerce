@@ -54,6 +54,13 @@ app.use(
     // Other session configuration options
   })
 );
+app.get("*", (req, res) => {
+    try {
+        res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
+    } catch (e) {
+        res.send("Welcome to Sara Organics");
+    }
+});
 app.use(
   cors({
     // origin: "http://localhost:3000",
@@ -244,11 +251,6 @@ app.get("/ordersbackend", async (req, res) => {
   }
 });
 
-
-
-app.get("*",(req,res)=>{
-  res.sendFile(path.join(__dirname,'frontend/dist','index.html'));
-})
 
 
 
