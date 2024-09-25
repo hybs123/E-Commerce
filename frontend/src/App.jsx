@@ -1,5 +1,5 @@
 import React, { Profiler } from "react";
-import { Route, Routes, ScrollRestoration } from "react-router-dom";
+import { BrowserRouter, Route, Router, ScrollRestoration } from "react-router-dom";
 import Home from "./pages/Home";
 import Collection from "./pages/Collection";
 import Contact from "./pages/Contact";
@@ -20,6 +20,7 @@ import ScrollToTop from "./components/Scrolltotop";
 import Backend from "./pages/backend";
 import Backendorders from "./pages/backendorders";
 import AdminPanel from "./pages/adminpanel";
+import { Switch } from "@nextui-org/react";
 
 
 // import ScrollToTop from './components/Scrolltotop'
@@ -27,12 +28,15 @@ import AdminPanel from "./pages/adminpanel";
 const App = () => {
   return (
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] text-yellow-900">
+    
       <ToastContainer />
       <Navbar />
       <SearchBar />
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
+      
+      <Router>
+      <Switch>
+      <Route path="/" element={<Home />} />
         <Route path="/collection" element={<Collection />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -46,8 +50,10 @@ const App = () => {
         <Route path="/adminpanel" element={<AdminPanel />} />
         
         <Route path="/profile" element={<Profile />} />
+      </Switch>
         
-      </Routes>
+        
+      </Router>
       <Footer />
     </div>
   );
