@@ -15,6 +15,7 @@ const Product = () => {
   const [size, setSize] = useState();
   const [star, setstar] = useState(0);
   const [des,setDes] = useState(true);
+  const [loading,setloading] = useState(true);
 
   const fetchProductData = async () => {
     const product = products.find(item => item.id === productId);
@@ -23,6 +24,7 @@ const Product = () => {
       setImage(product.image[0]);
       setproductReview(product.id)
       setreviewloading(false);
+      setloading(false);
       
     }
   };
@@ -48,6 +50,7 @@ const Product = () => {
 
 
 useEffect(() => {
+  console.log('Fetching product data in Product page:',productId)
   fetchProductData();
 }, []);
 
@@ -58,7 +61,9 @@ useEffect(() => {
 
   
 
-  return productData ? (
+  return !loading && 
+
+  productData ? (
     <div className='border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100'>
       {/* Product Data  */}
       <div className='flex gap-12 sm:gap-12 flex-col sm:flex-row'>
@@ -148,6 +153,8 @@ useEffect(() => {
       <RelatedProducts category={productData.category} subCategory={productData.subCategory} />
     </div>
   ) : <div className='opacity-0'></div>;
+
 };
+
 
 export default Product;
