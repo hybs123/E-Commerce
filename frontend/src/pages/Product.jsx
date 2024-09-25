@@ -49,7 +49,7 @@ const Product = () => {
 
 useEffect(() => {
   fetchProductData();
-}, [productId]);
+}, []);
 
 useEffect(() => {
   calculateStars();
