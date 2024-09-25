@@ -57,7 +57,7 @@ app.use(
 app.use(
   cors({
     // origin: "http://localhost:3000",
-    origin: "https://sara-organics.onrender.com",
+    origin: ["https://sara-organics.onrender.com","http://localhost:3000"],
     credentials: true,
   })
 );

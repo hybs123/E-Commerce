@@ -28,7 +28,7 @@ import AdminPanel from "./pages/adminpanel";
 
 const App = () => {
   return (
-    <Router>
+   
 
    
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] text-yellow-900">
@@ -60,7 +60,7 @@ const App = () => {
       </Routes>
       <Footer />
     </div>
-    </Router>
+    
   );
 };
 
