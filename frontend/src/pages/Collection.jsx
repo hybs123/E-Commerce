@@ -38,12 +38,12 @@ const Collection = () => {
 
       let productsCopy = products.slice();
       
-      if(showsearch){
+      if(showsearch && search){
         // console.log(search);
-        if(search && typeof search==='string'){
+       
 
-          productsCopy = productsCopy.filter(item=>item.name.toLowerCase().includes(search.toLowerCase()));
-        }
+          productsCopy = productsCopy.filter(item=>item.productname.toLowerCase().includes(search.toLowerCase()));
+      
         
       }
 
