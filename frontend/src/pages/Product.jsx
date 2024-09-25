@@ -17,6 +17,8 @@ const Product = () => {
   const [loading, setLoading] = useState(true);
 
   const fetchProductData = async () => {
+    console.log('Available products:', products); // Log all products
+    console.log('Fetching product with ID:', productId);
     const product = products.find(item => item.id === productId);
     if (product) {
       setProductData(product);
@@ -41,6 +43,7 @@ const Product = () => {
   };
 
   useEffect(() => {
+    
     fetchProductData();
   }, [productId]);
 
