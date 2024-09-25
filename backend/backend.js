@@ -54,11 +54,18 @@ app.use(
     // Other session configuration options
   })
 );
+app.get("*", (req, res) => {
+  try {
+      res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
+  } catch (e) {
+      res.send("Welcome to Sara Organics");
+  }
+});
 
 app.use(
   cors({
     // origin: "http://localhost:3000",
-    origin: ["https://sara-organics.onrender.com","https://sara-organics.vercel.app"],
+    // origin: ["https://sara-organics.onrender.com","https://sara-organics.vercel.app"],
     credentials: true,
   })
 );
@@ -245,13 +252,7 @@ app.get("/ordersbackend", async (req, res) => {
   }
 });
 
-app.get("https://sara-organics.onrender.com/collection", (req, res) => {
-  try {
-      res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
-  } catch (e) {
-      res.send("Welcome to Sara Organics");
-  }
-});
+
 
 
 
