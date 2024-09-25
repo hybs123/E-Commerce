@@ -21,12 +21,16 @@ import Backend from "./pages/backend";
 import Backendorders from "./pages/backendorders";
 import AdminPanel from "./pages/adminpanel";
 import { Switch } from "@nextui-org/react";
+import { Router } from "express";
 
 
 // import ScrollToTop from './components/Scrolltotop'
 
 const App = () => {
   return (
+    <Router>
+
+   
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] text-yellow-900">
     
       <ToastContainer />
@@ -35,7 +39,7 @@ const App = () => {
       <ScrollToTop />
       
       <Routes>
-      <Switch>
+     
       <Route path="/" element={<Home />} />
         <Route path="/collection" element={<Collection />} />
         <Route path="/about" element={<About />} />
@@ -50,12 +54,13 @@ const App = () => {
         <Route path="/adminpanel" element={<AdminPanel />} />
         
         <Route path="/profile" element={<Profile />} />
-      </Switch>
+      
         
         
       </Routes>
       <Footer />
     </div>
+    </Router>
   );
 };
 
