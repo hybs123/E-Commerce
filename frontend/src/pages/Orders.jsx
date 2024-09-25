@@ -56,7 +56,7 @@ const Orders = () => {
       </div>
 
       <div>
-        {!ordersshow.length ? (
+        {!ordersshow.length && !orderspast.length ? (
           <p>No Orders</p>
         ) : (
           <>
@@ -77,13 +77,14 @@ const Orders = () => {
                       </div>
                           </div>
                     ) : (
-                      <p className='text-sm sm:text-lg font-medium'>Product not found</p>
+                      <p className='text-sm sm:text-lg font-medium'>Order items not found</p>
                     )}
                   </div>
                 </div>
                 <p className='text-sm sm:text-md'>{item.track}</p>
               </div>
             ))}
+        
 
             <div className='mt-6'>
               <h3 className='text-xl mb-2'>Past Orders</h3>

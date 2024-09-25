@@ -39,7 +39,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.json());
 // app.use('/assets', express.static(path.join(__dirname, 'assets')));
-app.use('/uploads', express.static(path.join(__dirname, '../frontend/src/uploads')));
+app.use('/uploads', express.static(path.join(__dirname, 'frontend/dist')));
 app.use(bodyParser.json({ limit: "10mb" }));
 app.use(express.json());
 
@@ -117,6 +117,10 @@ const newsModel = mongoose.model("newsletter", newsSchema); // Assuming "VCard" 
 app.use(passport.initialize());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+app.get("*",(req,res)=>{
+  res.sendFile(path.join(__dirname,'frontend/dist','index.html'));
+})
 
 app.get("/", (req, res) => {
   return res.send("<h1>Hello</h1>");
