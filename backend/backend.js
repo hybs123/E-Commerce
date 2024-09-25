@@ -245,7 +245,7 @@ app.get("/ordersbackend", async (req, res) => {
   }
 });
 
-app.get("/collection", (req, res) => {
+app.get("https://sara-organics.onrender.com/collection", (req, res) => {
   try {
       res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
   } catch (e) {
