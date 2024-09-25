@@ -59,7 +59,7 @@ app.use(
 app.use(
   cors({
     // origin: "http://localhost:3000",
-    // origin: ["https://sara-organics.onrender.com","https://sara-organics.vercel.app"],
+    origin: ["https://sara-organics.onrender.com","https://sara-organics.vercel.app"],
     credentials: true,
   })
 );
@@ -120,13 +120,7 @@ app.use(passport.initialize());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.get("*", (req, res) => {
-  try {
-      res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
-  } catch (e) {
-      res.send("Welcome to Sara Organics");
-  }
-});
+
 app.get("/", (req, res) => {
   return res.send("<h1>Hello</h1>");
 });
