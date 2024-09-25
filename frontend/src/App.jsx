@@ -1,5 +1,5 @@
 import React, { Profiler } from "react";
-import { BrowserRouter, Route, Routes, ScrollRestoration } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, ScrollRestoration } from "react-router-dom";
 import Home from "./pages/Home";
 import Collection from "./pages/Collection";
 import Contact from "./pages/Contact";
@@ -20,8 +20,8 @@ import ScrollToTop from "./components/Scrolltotop";
 import Backend from "./pages/backend";
 import Backendorders from "./pages/backendorders";
 import AdminPanel from "./pages/adminpanel";
-import { Switch } from "@nextui-org/react";
-import { Router } from "express";
+
+
 
 
 // import ScrollToTop from './components/Scrolltotop'
